@@ -28,18 +28,18 @@ CREATE TABLE `admin` (
   PRIMARY KEY (`admin_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
-/*Table structure for table `kostumer` */
+/*Table structure for table `pelanggan` */
 
-DROP TABLE IF EXISTS `kostumer`;
+DROP TABLE IF EXISTS `pelanggan`;
 
-CREATE TABLE `kostumer` (
-  `kostumer_id` int(11) NOT NULL AUTO_INCREMENT,
-  `kostumer_nama` varchar(255) NOT NULL,
-  `kostumer_alamat` text NOT NULL,
-  `kostumer_jk` varchar(10) NOT NULL,
-  `kostumer_hp` varchar(20) NOT NULL,
-  `kostumer_ktp` varchar(50) NOT NULL,
-  PRIMARY KEY (`kostumer_id`)
+CREATE TABLE `pelanggan` (
+  `pelanggan_id` int(11) NOT NULL AUTO_INCREMENT,
+  `pelanggan_nama` varchar(255) NOT NULL,
+  `pelanggan_alamat` text NOT NULL,
+  `pelanggan_jk` varchar(10) NOT NULL,
+  `pelanggan_hp` varchar(20) NOT NULL,
+  `pelanggan_ktp` varchar(50) NOT NULL,
+  PRIMARY KEY (`pelanggan_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `mobil` */
@@ -63,7 +63,7 @@ DROP TABLE IF EXISTS `transaksi`;
 CREATE TABLE `transaksi` (
   `transaksi_id` int(11) NOT NULL AUTO_INCREMENT,
   `transaksi_karyawan` int(11) NOT NULL,
-  `transaksi_kostumer` int(11) NOT NULL,
+  `transaksi_pelanggan` int(11) NOT NULL,
   `transaksi_mobil` int(11) NOT NULL,
   `transaksi_tgl_pinjam` date NOT NULL,
   `transaksi_tgl_kembali` date NOT NULL,

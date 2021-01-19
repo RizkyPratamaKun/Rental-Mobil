@@ -4,23 +4,23 @@ class Transaksi_model extends CI_Model {
 
   //ambil id transaksi
   public function get_by_id($id) {
-    $this->db->select('transaksi.transaksi_id,kostumer.kostumer_nama,mobil.mobil_merk,mobil.mobil_id,
+    $this->db->select('transaksi.transaksi_id,pelanggan.pelanggan_nama,mobil.mobil_merk,mobil.mobil_id,
     transaksi.transaksi_tgl_pinjam,transaksi.transaksi_tgl_kembali,transaksi.transaksi_harga,transaksi.transaksi_denda
     ');
-    $this->db->join('kostumer','kostumer.kostumer_id = transaksi.transaksi_kostumer');
+    $this->db->join('pelanggan','pelanggan.pelanggan_id = transaksi.transaksi_pelanggan');
     $this->db->join('mobil','mobil.mobil_id = transaksi.transaksi_mobil');
 
     $this->db->where('transaksi_id',$id);
     return $this->db->get($this->table)->row();
   }
 
-  //untuk ambil semua data join mobil dan kostumer dan tampilkan
+  //untuk ambil semua data join mobil dan pelanggan dan tampilkan
   public function get_all() {
-    $this->db->select('transaksi.transaksi_id,transaksi_tgl,kostumer.kostumer_nama,mobil.mobil_merk,
+    $this->db->select('transaksi.transaksi_id,transaksi_tgl,pelanggan.pelanggan_nama,mobil.mobil_merk,
                        transaksi_tgl_pinjam,transaksi_tgl_kembali,transaksi_harga,transaksi_denda,
                        transaksi_tgldikembalikan,transaksi_totaldenda,transaksi_status
                       ');
-   $this->db->join('kostumer','kostumer.kostumer_id = transaksi.transaksi_kostumer');
+   $this->db->join('pelanggan','pelanggan.pelanggan_id = transaksi.transaksi_pelanggan');
    $this->db->join('mobil','mobil.mobil_id = transaksi.transaksi_mobil');
    return $this->db->get($this->table)->result();
   }
@@ -68,12 +68,12 @@ class Transaksi_model extends CI_Model {
     $tgl_akhir = date('Y-m-d',$tgl);
 
 
-    $this->db->select('transaksi.transaksi_id,kostumer.kostumer_nama,mobil.mobil_merk,
+    $this->db->select('transaksi.transaksi_id,pelanggan.pelanggan_nama,mobil.mobil_merk,
         transaksi.transaksi_tgl,transaksi.transaksi_tgl_pinjam,transaksi.transaksi_tgl_kembali,
         transaksi.transaksi_harga,transaksi.transaksi_denda,transaksi.transaksi_tgldikembalikan,
         transaksi.transaksi_totaldenda,transaksi.transaksi_status');
 
-    $this->db->join('kostumer','kostumer.kostumer_id = transaksi.transaksi_kostumer');
+    $this->db->join('pelanggan','pelanggan.pelanggan_id = transaksi.transaksi_pelanggan');
     $this->db->join('mobil','mobil.mobil_id = transaksi.transaksi_mobil');
 
     $this->db->where('transaksi_tgl >=',$tgl_awal);
@@ -83,4 +83,3 @@ class Transaksi_model extends CI_Model {
   }
 
 }
- ?>

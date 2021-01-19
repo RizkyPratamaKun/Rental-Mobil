@@ -15,18 +15,19 @@
       <h4 class="text-uppercase">Transaksi Baru</h4>
       <hr>
       <form action="<?php echo base_url('Transaksi/transaksi_baru_proses') ?>" enctype="multipart/form-data" method="post">
-        <!-- Kostumer -->
+        <!-- pelanggan -->
         <div class="form-group">
-          <label for="kostumer" class="font-weight-bold">Kostumer</label>
-          <select name="kostumer" class="form-control">
-            <option>--Pilih Kostumer--</option>
+          <label for="pelanggan" class="font-weight-bold">Pelanggan</label>
+          <select name="pelanggan" class="form-control">
+            <option>--Pilih pelanggan--</option>
             <?php
-            foreach ($kostumer as $kostumer) {
-              echo "<option value='$kostumer->kostumer_id'>$kostumer->kostumer_nama</option>";
+            foreach ($pelanggan as $pelanggan) {
+              echo "<option value='$pelanggan->pelanggan_id'>$pelanggan->pelanggan_nama</option>";
             }
             ?>
           </select>
         </div>
+
         <!-- Mobil -->
         <div class="form-group">
           <label for="mobil" class="font-weight-bold">Mobil</label>
@@ -37,6 +38,7 @@
             } ?>
           </select>
         </div>
+
         <!-- Tanggal Pinjam -->
         <div class="form-group">
           <label for="tgl_pinjam" class="font-weight-bold">Tanggal Pinjam</label>
@@ -46,7 +48,7 @@
                 <i class="fa fa-calendar" aria-hidden="true"></i>
               </div>
             </div>
-            <input type="text" name="tgl_pinjam" id="tgl_pinjam" class="form-control" placeholder="dd-mm-yyyy" aria-label="Input group example" aria-describedby="btnGroupAddon">
+            <input type="text" name="tgl_pinjam" id="tgl_pinjam" class="form-control datepicker" placeholder="dd-mm-yyyy" aria-label="Input group example" aria-describedby="btnGroupAddon">
             <?php echo form_error('tgl_pinjam') ?>
           </div>
         </div>
@@ -60,7 +62,7 @@
                 <i class="fa fa-calendar" aria-hidden="true"></i>
               </div>
             </div>
-            <input type="text" name="tgl_kembali" id="tgl_kembali" class="form-control" placeholder="dd-mm-yyyy" aria-label="Input group example" aria-describedby="btnGroupAddon">
+            <input type="text" name="tgl_kembali" id="tgl_kembali" class="form-control datepicker" placeholder="dd-mm-yyyy" aria-label="Input group example" aria-describedby="btnGroupAddon">
             <?php echo form_error('tgl_kembali') ?>
           </div>
         </div>
@@ -80,7 +82,7 @@
         </div>
         <!-- Harga Denda / perhari -->
         <div class="form-group">
-          <label for="denda" class="font-weight-bold">Denda</label>
+          <label for="denda" class="font-weight-bold">Denda/Hari</label>
           <div class="input-group mb-1">
             <div class="input-group-prepend">
               <div class="input-group-text">
@@ -91,6 +93,7 @@
           </div>
           <?php echo form_error('denda') ?>
         </div>
+        
         <div class="form-group">
           <input type="submit" name="submit" value="Tambah" class="btn btn-success">
           <input type="reset" name="reset" value="Reset" class="btn btn-danger">
@@ -100,17 +103,22 @@
   </div>
 </div>
 <?php $this->load->view('footer') ?>
-<script>
-  $(document).ready(function() {
-    $('#tgl_pinjam').datepicker({
-      autoclose: true,
+
+<script type="text/javascript">
+  $(function() {
+    $(".datepicker").datepicker({
       format: 'dd-mm-yyyy',
-    });
-    $('#tgl_kembali').datepicker({
       autoclose: true,
-      format: 'dd-mm-yyyy',
-      minDate: moment().add('d', 2).toDate(),
-      maxDate: '#tgl_pinjam+7d',
+      todayHighlight: true,
     });
-  })
+
+    $("#tgl_pinjam").on('changeDate', function(selected) {
+      var startDate = new Date(selected.date.valueOf());
+
+      $("#tgl_kembali").datepicker('setStartDate', startDate);
+      if ($("#tgl_pinjam").val() > $("#tgl_kembali").val()) {
+        $("#tgl_kembali").val($("#tgl_pinjam").val());
+      }
+    });
+  });
 </script>

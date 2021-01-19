@@ -24,7 +24,7 @@
                 <i class="fa fa-calendar" aria-hidden="true"></i>
               </div>
             </div>
-            <input type="text" name="tgl_awal" id="tgl_awal" class="form-control" placeholder="dd-mm-yyyy" aria-label="Input group example" aria-describedby="btnGroupAddon">
+            <input type="text" name="tgl_awal" id="tgl_awal" class="form-control datepicker" placeholder="dd-mm-yyyy" aria-label="Input group example" aria-describedby="btnGroupAddon">
             <?php echo form_error('tgl_awal') ?>
           </div>
         </div>
@@ -37,7 +37,7 @@
                 <i class="fa fa-calendar" aria-hidden="true"></i>
               </div>
             </div>
-            <input type="text" name="tgl_akhir" id="tgl_akhir" class="form-control" placeholder="dd-mm-yyyy" aria-label="Input group example" aria-describedby="btnGroupAddon">
+            <input type="text" name="tgl_akhir" id="tgl_akhir" class="form-control datepicker" placeholder="dd-mm-yyyy" aria-label="Input group example" aria-describedby="btnGroupAddon">
           </div>
         </div>
 
@@ -51,16 +51,22 @@
     </div>
   </div>
   <br>
-<?php $this->load->view('footer') ?>
-<script>
-$(document).ready(function() {
-  $('#tgl_awal').datepicker({
-    autoclose:true,
-    format:'dd-mm-yyyy',
-  });
-  $('#tgl_akhir').datepicker({
-    autoclose:true,
-    format:'dd-mm-yyyy',
-  });
-});
-</script>
+  <?php $this->load->view('footer') ?>
+  <script type="text/javascript">
+    $(function() {
+      $(".datepicker").datepicker({
+        format: 'dd-mm-yyyy',
+        autoclose: true,
+        todayHighlight: true,
+      });
+
+      $("#tgl_awal").on('changeDate', function(selected) {
+        var startDate = new Date(selected.date.valueOf());
+
+        $("#tgl_akhir").datepicker('setStartDate', startDate);
+        if ($("#tgl_awal").val() > $("#tgl_akhir").val()) {
+          $("#tgl_akhir").val($("#tgl_awal").val());
+        }
+      });
+    });
+  </script>

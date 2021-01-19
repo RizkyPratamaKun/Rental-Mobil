@@ -9,7 +9,7 @@ class Dashboard extends CI_Controller
 
     $this->load->model('Mobil_model');
     $this->load->model('Transaksi_model');
-    $this->load->model('Kostumer_model');
+    $this->load->model('pelanggan_model');
     $this->load->model('Auth_model');
 
     if (!$this->session->has_userdata('admin_nama')) {
@@ -23,16 +23,16 @@ class Dashboard extends CI_Controller
     $this->data["title"] = "Dashboard - Aplikasi Rental Mobil";
     //jumlah mobil
     $this->data["jumlah_mobil"]     = $this->db->get('mobil')->num_rows();
-    //jumlah kostumer
-    $this->data["jumlah_kostumer"]  = $this->db->get('kostumer')->num_rows();
+    //jumlah pelanggan
+    $this->data["jumlah_pelanggan"]  = $this->db->get('pelanggan')->num_rows();
     //jumlah transaksi
     $this->data["jumlah_transaksi"] = $this->db->get('transaksi')->num_rows();
     //rental selesai
     $this->data["rental_selesai"]   = $this->Transaksi_model->get_transaksi_status();
     //mobil-merek
     $this->data["mobil"]            = $this->Mobil_model->get_data_mobil_merk();
-    //kostumer terbaru
-    $this->data["kostumer_baru"]    = $this->Kostumer_model->get_kostumer();
+    //pelanggan terbaru
+    $this->data["pelanggan_baru"]    = $this->pelanggan_model->get_pelanggan();
     //Peminjaman Terakhir
     $this->data["peminjaman_akhir"] = $this->Transaksi_model->get_transaksi_terakhir();
     //edit_pass_nama_user

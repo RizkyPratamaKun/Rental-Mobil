@@ -63,18 +63,18 @@ h2.dashboard {
     background-color: rgba(0,0,0,.06);
 }
 
-/* jumlah Kustomer */
-.header-jumlah-kustomer {
+/* jumlah pelanggan */
+.header-jumlah-pelanggan {
   background-color: rgba(65, 176, 150, 0.53);
   color: rgba(4, 143, 111, 1);
 }
 
-.btn-jumlah-kustomer:hover {
+.btn-jumlah-pelanggan:hover {
   background-color:rgb(13, 149, 120);
   color: white;
 }
 
-.card-body-jumlah-kustomer a {
+.card-body-jumlah-pelanggan a {
   border: 1px solid rgba(65, 176, 150, 0.53);
   color: rgba(4, 143, 111, 1);
   background-color: rgba(0,0,0,.06);
@@ -139,7 +139,7 @@ a.hapus:hover {
   color: black;
 }
 
-/* data kostumer */
+/* data pelanggan */
 .edit {
     color: white;
     background-color: rgb(19, 182, 153);
