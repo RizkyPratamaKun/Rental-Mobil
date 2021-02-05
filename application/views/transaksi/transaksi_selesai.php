@@ -17,9 +17,24 @@
       <?php echo form_open('Transaksi/transaksi_selesai_proses') ?>
       <input type="hidden" name="id" value="<?php echo $transaksi->transaksi_id ?>">
       <input type="hidden" name="mobil_id" value="<?php echo $transaksi->mobil_id ?>">
+
+      <!-- Jika tanggak Dikembalikan mobil lebih dari tanggal kembali maka hitung denda perharinya -->
+      <div class="form-group">
+        <label for="tgl_dikembalikan" class="font-weight-bold">Tanggal Dikembalikan</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text" id="btnGroupAddon">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+            </div>
+          </div>
+          <input type="text" name="tgl_dikembalikan" id="tgl_dikembalikan" class="form-control" value="<?php echo date('d-m-yy'); ?>" placeholder="dd-mm-yyyy" aria-label="Input group example" aria-describedby="btnGroupAddon">
+        </div>
+        <?php echo form_error('tgl_dikembalikan') ?>
+      </div>
+
       <!-- pelanggan -->
       <div class="form-group">
-        <label for="pelanggan" class="font-weight-bold">pelanggan</label>
+        <label for="pelanggan" class="font-weight-bold">Pelanggan</label>
         <?php echo form_input($pelanggan, $transaksi->pelanggan_nama) ?>
       </div>
       <!-- Mobil -->
@@ -57,19 +72,7 @@
       </div>
       <!-- Tanggal Dikembalikan -->
 
-      <!-- Jika tanggak Dikembalikan mobil lebih dari tanggal kembali maka hitung denda perharinya -->
-      <div class="form-group">
-        <label for="tgl_dikembalikan" class="font-weight-bold">Tanggal Dikembalikan</label>
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <div class="input-group-text" id="btnGroupAddon">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-            </div>
-          </div>
-          <input type="text" name="tgl_dikembalikan" id="tgl_dikembalikan" class="form-control" value="<?php echo date('d-m-yy'); ?>" placeholder="dd-mm-yyyy" aria-label="Input group example" aria-describedby="btnGroupAddon">
-        </div>
-        <?php echo form_error('tgl_dikembalikan') ?>
-      </div>
+
       <div class="form-group">
         <input type="submit" name="submit" value="Selesai" class="btn btn-success">
       </div>
