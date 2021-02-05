@@ -19,6 +19,8 @@
       <input type="hidden" name="mobil_id" value="<?php echo $transaksi->mobil_id ?>">
 
       <!-- Jika tanggak Dikembalikan mobil lebih dari tanggal kembali maka hitung denda perharinya -->
+
+      <!-- Tanggal Dikembalikan -->
       <div class="form-group">
         <label for="tgl_dikembalikan" class="font-weight-bold">Tanggal Dikembalikan</label>
         <div class="input-group">
@@ -31,47 +33,6 @@
         </div>
         <?php echo form_error('tgl_dikembalikan') ?>
       </div>
-
-      <!-- pelanggan -->
-      <div class="form-group">
-        <label for="pelanggan" class="font-weight-bold">Pelanggan</label>
-        <?php echo form_input($pelanggan, $transaksi->pelanggan_nama) ?>
-      </div>
-      <!-- Mobil -->
-      <div class="form-group">
-        <label for="mobil" class="font-weight-bold">Mobil</label>
-        <?php echo form_input($mobil, $transaksi->mobil_merk) ?>
-      </div>
-      <!-- Tanggal pinjam -->
-      <div class="form-group">
-        <label for="tgl_pinjam" class="font-weight-bold">Tanggal Pinjam</label>
-        <?php
-        $tanggal = strtotime($transaksi->transaksi_tgl_pinjam);
-        $tanggal_pinjam = date('d-m-Y', $tanggal);
-        echo form_input($tgl_pinjam, $tanggal_pinjam);
-        ?>
-      </div>
-      <!-- Tanggal Kembali -->
-      <div class="form-group">
-        <label for="tgl_kembali" class="font-weight-bold">Tanggal Kembali</label>
-        <?php
-        $tanggal = strtotime($transaksi->transaksi_tgl_kembali);
-        $tanggal_kembali = date('d-m-Y', $tanggal);
-        echo form_input($tgl_kembali, $tanggal_kembali);
-        ?>
-      </div>
-      <!-- Harga -->
-      <div class="form-group">
-        <label for="harga" class="font-weight-bold">Harga</label>
-        <?php echo form_input($harga, $transaksi->transaksi_harga) ?>
-      </div>
-      <!-- Denda / Hari -->
-      <div class="form-group">
-        <label for="denda" class="font-weight-bold">Denda / Hari</label>
-        <?php echo form_input($denda_hari, $transaksi->transaksi_denda) ?>
-      </div>
-      <!-- Tanggal Dikembalikan -->
-
 
       <div class="form-group">
         <input type="submit" name="submit" value="Selesai" class="btn btn-success">

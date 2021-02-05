@@ -13,7 +13,7 @@ class Laporan extends CI_Controller {
   }
 
   public function index() {
-    $this->data["title"] = "Laporan Transaksi - Aplikasi Rental Mobil";
+    $this->data["title"] = "Laporan Transaksi - Kedan Trans & Tour";
 
     $this->load->view('laporan/laporan',$this->data);
   }
@@ -35,5 +35,3 @@ class Laporan extends CI_Controller {
   }
 
 }
-
- ?>

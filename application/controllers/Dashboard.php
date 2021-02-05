@@ -20,7 +20,7 @@ class Dashboard extends CI_Controller
 
   public function index()
   {
-    $this->data["title"] = "Dashboard - Aplikasi Rental Mobil";
+    $this->data["title"] = "Dashboard - Kedan Trans & Tour";
     //jumlah mobil
     $this->data["jumlah_mobil"]     = $this->db->get('mobil')->num_rows();
     //jumlah pelanggan

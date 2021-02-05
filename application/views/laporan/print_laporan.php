@@ -34,7 +34,7 @@
 </head>
 
 <body>
-  <h1>Laporan Transaksi Rental Mobil</h1>
+  <h1>Laporan Transaksi Kedan Trans & Tour</h1>
   <hr>
   <br>
   <table>

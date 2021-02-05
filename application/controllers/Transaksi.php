@@ -18,7 +18,7 @@ class Transaksi extends CI_Controller
 
   public function index()
   {
-    $this->data["title"] = "Data Transaksi - Aplikasi Rental Mobil";
+    $this->data["title"] = "Data Transaksi - Kedan Trans & Tour";
 
     $this->data["get_all"] = $this->Transaksi_model->get_all();
 
@@ -28,7 +28,7 @@ class Transaksi extends CI_Controller
   //transaksi baru
   public function transaksi_baru()
   {
-    $this->data["title"] = "Transaksi Baru - Aplikasi Rental Mobil";
+    $this->data["title"] = "Transaksi Baru - Kedan Trans & Tour";
 
     //pelanggan
     $this->data["pelanggan"] = $this->pelanggan_model->get_all_pelanggan();
@@ -97,7 +97,7 @@ class Transaksi extends CI_Controller
 
     $this->data["transaksi"] = $this->Transaksi_model->get_by_id($id);
 
-    $this->data["title"] = "Transaksi Selesai - Aplikasi Rental Mobil";
+    $this->data["title"] = "Transaksi Selesai - Kedan Trans & Tour";
 
     if ($row) {
       //pelanggan
